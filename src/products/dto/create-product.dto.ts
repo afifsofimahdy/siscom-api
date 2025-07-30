@@ -18,4 +18,12 @@ export class CreateProductDto {
   @IsNumber()
   @Min(0)
   stock?: number;
+  
+  @IsOptional()
+  @IsString()
+  image_url?: string; 
+
+  @IsOptional()
+  @IsNumber()
+  categoryId?: number;
 }

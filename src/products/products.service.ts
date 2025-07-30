@@ -18,12 +18,19 @@ export class ProductsService {
   }
 
   async findAll() {
-    return this.prismaRead.product.findMany();
+    return this.prismaRead.product.findMany({
+      select: {
+        category: true,
+      },
+    });
   }
 
   async findOne(id: number) {
     return this.prismaRead.product.findUnique({
       where: { id },
+      include: {
+        category: true,
+      },
     });
   }
 

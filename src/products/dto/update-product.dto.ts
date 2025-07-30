@@ -18,4 +18,9 @@ export class UpdateProductDto {
   @IsNumber()
   @Min(0)
   stock?: number;
+
+  @IsOptional()
+  @IsString()
+  image_url?: string; 
+  
 }
