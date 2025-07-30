@@ -5,6 +5,7 @@ import { TransformInterceptor } from './common/interceptors/transform.intercepto
 import { LoggingInterceptor } from './common/interceptors/logging.interceptor';
 import { WINSTON_MODULE_NEST_PROVIDER } from 'nest-winston';
 import { AppLoggerService } from './common/logger/logger.service';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -27,6 +28,20 @@ async function bootstrap() {
     new LoggingInterceptor(logger)
   );
   
+  // Setup Swagger documentation
+  const config = new DocumentBuilder()
+    .setTitle('Siscom API')
+    .setDescription('API dokumentasi untuk aplikasi Siscom')
+    .setVersion('1.0')
+    .addTag('products', 'Operasi terkait produk')
+    .addTag('categories', 'Operasi terkait kategori')
+    .build();
+  
+  const document = SwaggerModule.createDocument(app, config);
+  SwaggerModule.setup('api/docs', app, document);
+  
   await app.listen(process.env.PORT ?? 3000);
+  
+  logger.log(`Application is running on: ${await app.getUrl()}/api/docs`, 'Bootstrap');
 }
 bootstrap();
