@@ -31,6 +31,7 @@ model Product {
   price       Float
   stock       Int       @default(0)
   image_url   String?   @db.VarChar(255)
+  group_item  String?   @db.VarChar(100)
   categoryId  Int?      @map("category_id")
   category    Category? @relation(fields: [categoryId], references: [id])
   createdAt   DateTime  @default(now()) @map("created_at")

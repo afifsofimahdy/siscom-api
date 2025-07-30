@@ -10,33 +10,16 @@ async function main() {
   console.log('Seeding database...');
   
   // Buat kategori
-  const categories = [
-    {
-      name: 'Laptop',
-      description: 'Perangkat komputer portabel'
-    },
-    {
-      name: 'Smartphone',
-      description: 'Perangkat komunikasi mobile'
-    },
-    {
-      name: 'Aksesoris',
-      description: 'Perangkat pendukung komputer dan smartphone'
-    },
-    {
-      name: 'Komponen',
-      description: 'Komponen perangkat keras komputer'
-    }
-  ];
+  const category = {
+    name: 'Elektronik',
+    description: 'Perangkat elektronik dan komponen'
+  };
   
   // Masukkan kategori ke database
-  const categoryMap = {};
-  for (const category of categories) {
-    const createdCategory = await prisma.category.create({
-      data: category
-    });
-    categoryMap[createdCategory.name] = createdCategory.id;
-  }
+  const createdCategory = await prisma.category.create({
+    data: category
+  });
+  const categoryId = createdCategory.id;
   
   // Buat array data product
   const productData = [
@@ -46,7 +29,8 @@ async function main() {
       price: 15000000,
       stock: 10,
       image_url: 'https://example.com/images/asus-rog.jpg',
-      categoryId: categoryMap['Laptop']
+      group_item: 'Laptop',
+      categoryId: categoryId
     },
     {
       name: 'Smartphone Samsung Galaxy S21',
@@ -54,7 +38,8 @@ async function main() {
       price: 12000000,
       stock: 15,
       image_url: 'https://example.com/images/samsung-s21.jpg',
-      categoryId: categoryMap['Smartphone']
+      group_item: 'Smartphone',
+      categoryId: categoryId
     },
     {
       name: 'Monitor LG 27 inch',
@@ -62,7 +47,8 @@ async function main() {
       price: 3500000,
       stock: 8,
       image_url: 'https://example.com/images/lg-monitor.jpg',
-      categoryId: categoryMap['Aksesoris']
+      group_item: 'Aksesoris',
+      categoryId: categoryId
     },
     {
       name: 'Keyboard Mechanical Logitech',
@@ -70,7 +56,8 @@ async function main() {
       price: 1200000,
       stock: 20,
       image_url: 'https://example.com/images/logitech-keyboard.jpg',
-      categoryId: categoryMap['Aksesoris']
+      group_item: 'Aksesoris',
+      categoryId: categoryId
     },
     {
       name: 'Mouse Gaming Razer',
@@ -78,7 +65,8 @@ async function main() {
       price: 800000,
       stock: 25,
       image_url: 'https://example.com/images/razer-mouse.jpg',
-      categoryId: categoryMap['Aksesoris']
+      group_item: 'Aksesoris',
+      categoryId: categoryId
     },
     {
       name: 'Headset SteelSeries',
@@ -86,7 +74,8 @@ async function main() {
       price: 1500000,
       stock: 12,
       image_url: 'https://example.com/images/steelseries-headset.jpg',
-      categoryId: categoryMap['Aksesoris']
+      group_item: 'Aksesoris',
+      categoryId: categoryId
     },
     {
       name: 'Webcam Logitech C920',
@@ -94,7 +83,8 @@ async function main() {
       price: 950000,
       stock: 7,
       image_url: 'https://example.com/images/logitech-c920.jpg',
-      categoryId: categoryMap['Aksesoris']
+      group_item: 'Aksesoris',
+      categoryId: categoryId
     },
     {
       name: 'SSD Samsung 1TB',
@@ -102,7 +92,8 @@ async function main() {
       price: 1800000,
       stock: 30,
       image_url: 'https://example.com/images/samsung-ssd.jpg',
-      categoryId: categoryMap['Komponen']
+      group_item: 'Komponen',
+      categoryId: categoryId
     },
     {
       name: 'RAM Corsair 16GB',
@@ -110,7 +101,8 @@ async function main() {
       price: 1200000,
       stock: 18,
       image_url: 'https://example.com/images/corsair-ram.jpg',
-      categoryId: categoryMap['Komponen']
+      group_item: 'Komponen',
+      categoryId: categoryId
     },
     {
       name: 'Power Supply Corsair 750W',
@@ -118,7 +110,8 @@ async function main() {
       price: 1500000,
       stock: 5,
       image_url: 'https://example.com/images/corsair-psu.jpg',
-      categoryId: categoryMap['Komponen']
+      group_item: 'Komponen',
+      categoryId: categoryId
     }
   ];
   

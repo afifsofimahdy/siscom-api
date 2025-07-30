@@ -57,4 +57,13 @@ export class CreateProductDto {
   @IsOptional()
   @IsNumber()
   categoryId?: number;
+
+  @ApiProperty({
+    description: 'Grup item produk',
+    example: 'Elektronik',
+    required: false
+  })
+  @IsOptional()
+  @IsString()
+  group_item?: string;
 }

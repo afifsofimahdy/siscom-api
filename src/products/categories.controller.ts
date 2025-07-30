@@ -1,9 +1,10 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, ParseIntPipe, NotFoundException } from '@nestjs/common';
-import { ApiTags, ApiOperation, ApiResponse as SwaggerResponse, ApiParam, ApiBody } from '@nestjs/swagger';
+import { Controller, Get, Post, Body, Patch, Param, Delete, ParseIntPipe, NotFoundException, Query } from '@nestjs/common';
+import { ApiTags, ApiOperation, ApiResponse as SwaggerResponse, ApiParam, ApiBody, ApiQuery } from '@nestjs/swagger';
 import { CategoriesService } from './categories.service';
 import { CreateCategoryDto } from './dto/create-category.dto';
 import { UpdateCategoryDto } from './dto/update-category.dto';
 import { ApiResponse } from '../common/response/api-response';
+import { PaginationDto } from '../common/dto/pagination.dto';
 
 @ApiTags('categories')
 @Controller('categories')
@@ -23,9 +24,11 @@ export class CategoriesController {
   @Get()
   @ApiOperation({ summary: 'Mendapatkan semua kategori' })
   @SwaggerResponse({ status: 200, description: 'Daftar kategori berhasil diambil' })
-  async findAll() {
-    const categories = await this.categoriesService.findAll();
-    return ApiResponse.success(categories, 'Categories retrieved successfully');
+  @ApiQuery({ name: 'page', type: Number, required: false, description: 'Halaman yang ingin ditampilkan', example: 1 })
+  @ApiQuery({ name: 'limit', type: Number, required: false, description: 'Jumlah item per halaman', example: 10 })
+  async findAll(@Query() pagination: PaginationDto) {
+    const result = await this.categoriesService.findAll(pagination);
+    return ApiResponse.success(result, 'Categories retrieved successfully');
   }
 
   @Get(':id')
@@ -46,13 +49,18 @@ export class CategoriesController {
   @SwaggerResponse({ status: 200, description: 'Daftar produk dalam kategori berhasil diambil' })
   @SwaggerResponse({ status: 404, description: 'Kategori tidak ditemukan' })
   @ApiParam({ name: 'id', description: 'ID kategori', example: 1 })
-  async findProductsByCategory(@Param('id', ParseIntPipe) id: number) {
+  @ApiQuery({ name: 'page', type: Number, required: false, description: 'Halaman yang ingin ditampilkan', example: 1 })
+  @ApiQuery({ name: 'limit', type: Number, required: false, description: 'Jumlah item per halaman', example: 10 })
+  async findProductsByCategory(
+    @Param('id', ParseIntPipe) id: number,
+    @Query() pagination: PaginationDto
+  ) {
     const category = await this.categoriesService.findOne(id);
     if (!category) {
       throw new NotFoundException('Category not found');
     }
-    const products = await this.categoriesService.findProductsByCategory(id);
-    return ApiResponse.success(products, `Products in category '${category.name}' retrieved successfully`);
+    const result = await this.categoriesService.findProductsByCategory(id, pagination);
+    return ApiResponse.success(result, `Products in category '${category.name}' retrieved successfully`);
   }
 
   @Patch(':id')

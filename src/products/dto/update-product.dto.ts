@@ -51,4 +51,12 @@ export class UpdateProductDto {
   @IsString()
   image_url?: string; 
   
+  @ApiProperty({
+    description: 'Grup item produk',
+    example: 'Elektronik',
+    required: false
+  })
+  @IsOptional()
+  @IsString()
+  group_item?: string;
 }

@@ -1,9 +1,10 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, ParseIntPipe, NotFoundException } from '@nestjs/common';
-import { ApiTags, ApiOperation, ApiResponse as SwaggerResponse, ApiParam, ApiBody } from '@nestjs/swagger';
+import { Controller, Get, Post, Body, Patch, Param, Delete, ParseIntPipe, NotFoundException, Query } from '@nestjs/common';
+import { ApiTags, ApiOperation, ApiResponse as SwaggerResponse, ApiParam, ApiBody, ApiQuery } from '@nestjs/swagger';
 import { ProductsService } from './products.service';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { ApiResponse } from '../common/response/api-response';
+import { PaginationDto } from '../common/dto/pagination.dto';
 
 @ApiTags('products')
 @Controller('products')
@@ -21,11 +22,13 @@ export class ProductsController {
   }
 
   @Get()
-  @ApiOperation({ summary: 'Mendapatkan semua produk' })
+  @ApiOperation({ summary: 'Mendapatkan semua produk dengan pagination' })
   @SwaggerResponse({ status: 200, description: 'Daftar produk berhasil diambil' })
-  async findAll() {
-    const products = await this.productsService.findAll();
-    return ApiResponse.success(products, 'Products retrieved successfully');
+  @ApiQuery({ name: 'page', type: Number, required: false, description: 'Halaman yang ingin ditampilkan', example: 1 })
+  @ApiQuery({ name: 'limit', type: Number, required: false, description: 'Jumlah item per halaman', example: 10 })
+  async findAll(@Query() pagination: PaginationDto) {
+    const result = await this.productsService.findAll(pagination);
+    return ApiResponse.success(result, 'Products retrieved successfully');
   }
 
   @Get(':id')
