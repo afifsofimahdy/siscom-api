@@ -1,7 +1,7 @@
 import { Test } from '@nestjs/testing';
-import { PrismaModule } from '../src/prisma/prisma.module';
-import { PrismaService } from '../src/prisma/prisma.service';
-import { PrismaReadService } from '../src/prisma/prisma-read.service';
+import { PrismaModule } from '../../src/prisma/prisma.module';
+import { PrismaService } from '../../src/prisma/prisma.service';
+import { PrismaReadService } from '../../src/prisma/prisma-read.service';
 
 describe('PrismaModule', () => {
   it('should compile the module', async () => {
