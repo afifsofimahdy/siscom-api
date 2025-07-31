@@ -145,12 +145,12 @@ PORT=3001 npm run start:prod
 ### Error: Prisma Database Connection
 
 Jika Anda mengalami masalah koneksi database, pastikan:
-1. PostgreSQL berjalan di mesin Anda
+1. MySQL berjalan di mesin Anda
 2. Kredensial database di file `.env` benar
 3. Database yang ditentukan dalam URL sudah dibuat
 
-Anda dapat membuat database baru dengan perintah PostgreSQL:
+Anda dapat membuat database baru dengan perintah MySQL:
 ```bash
-psql -U postgres -c "CREATE DATABASE siscom;"
+mysql -u root -p -e "CREATE DATABASE siscom;"
 ```
   
