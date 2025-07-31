@@ -53,6 +53,11 @@ npm run start:dev
 
 Aplikasi akan berjalan di `http://localhost:3000` dan Swagger UI dapat diakses di `http://localhost:3000/api/docs`.
 
+Aplikasi akan berjalan di `http://localhost:3000` dan Swagger UI dapat diakses di `http://localhost:3000/api/docs`.
+
+![Swagger UI Documentation](storage/swagger.png)
+
+
 ### 6. Build dan Jalankan Aplikasi dalam Mode Production
 
 ```bash
