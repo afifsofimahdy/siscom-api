@@ -1,10 +1,10 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { CategoriesService } from './categories.service';
-import { PrismaService } from '../prisma/prisma.service';
-import { PrismaReadService } from '../prisma/prisma-read.service';
-import { CreateCategoryDto } from './dto/create-category.dto';
-import { UpdateCategoryDto } from './dto/update-category.dto';
-import { PaginationDto } from '../common/dto/pagination.dto';
+import { CategoriesService } from '../../src/products/categories.service';
+import { PrismaService } from '../../src/prisma/prisma.service';
+import { PrismaReadService } from '../../src/prisma/prisma-read.service';
+import { CreateCategoryDto } from '../../src/products/dto/create-category.dto';
+import { UpdateCategoryDto } from '../../src/products/dto/update-category.dto';
+import { PaginationDto } from '../../src/common/dto/pagination.dto';
 
 describe('CategoriesService', () => {
   let service: CategoriesService;

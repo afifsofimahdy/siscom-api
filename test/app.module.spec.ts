@@ -1,7 +1,7 @@
 import { Test } from '@nestjs/testing';
-import { AppModule } from './app.module';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { AppModule } from '../src/app.module';
+import { AppController } from '../src/app.controller';
+import { AppService } from '../src/app.service';
 
 describe('AppModule', () => {
   it('should compile the module', async () => {

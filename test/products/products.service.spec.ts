@@ -1,10 +1,10 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { ProductsService } from './products.service';
-import { PrismaService } from '../prisma/prisma.service';
-import { PrismaReadService } from '../prisma/prisma-read.service';
-import { CreateProductDto } from './dto/create-product.dto';
-import { UpdateProductDto } from './dto/update-product.dto';
-import { PaginationDto } from '../common/dto/pagination.dto';
+import { ProductsService } from '../../src/products/products.service';
+import { PrismaService } from '../../src/prisma/prisma.service';
+import { PrismaReadService } from '../../src/prisma/prisma-read.service';
+import { CreateProductDto } from '../../src/products/dto/create-product.dto';
+import { UpdateProductDto } from '../../src/products/dto/update-product.dto';
+import { PaginationDto } from '../../src/common/dto/pagination.dto';
 
 describe('ProductsService', () => {
   let service: ProductsService;

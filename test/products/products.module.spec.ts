@@ -1,9 +1,9 @@
 import { Test } from '@nestjs/testing';
-import { ProductsModule } from './products.module';
-import { ProductsService } from './products.service';
-import { ProductsController } from './products.controller';
-import { CategoriesService } from './categories.service';
-import { CategoriesController } from './categories.controller';
+import { ProductsModule } from '../../src/products/products.module';
+import { ProductsService } from '../../src/products/products.service';
+import { ProductsController } from '../../src/products/products.controller';
+import { CategoriesService } from '../../src/products/categories.service';
+import { CategoriesController } from '../../src/products/categories.controller';
 
 describe('ProductsModule', () => {
   it('should compile the module', async () => {

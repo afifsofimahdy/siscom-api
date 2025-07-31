@@ -1,5 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { AppLoggerService } from './logger.service';
+import { AppLoggerService } from '../../src/common/logger/logger.service';
 import { WINSTON_MODULE_PROVIDER } from 'nest-winston';
 
 describe('AppLoggerService', () => {

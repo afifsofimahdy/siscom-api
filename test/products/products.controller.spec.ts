@@ -1,11 +1,11 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { ProductsController } from './products.controller';
-import { ProductsService } from './products.service';
-import { CreateProductDto } from './dto/create-product.dto';
-import { UpdateProductDto } from './dto/update-product.dto';
-import { PaginationDto } from '../common/dto/pagination.dto';
+import { ProductsController } from '../../src/products/products.controller';
+import { ProductsService } from '../../src/products/products.service';
+import { CreateProductDto } from '../../src/products/dto/create-product.dto';
+import { UpdateProductDto } from '../../src/products/dto/update-product.dto';
+import { PaginationDto } from '../../src/common/dto/pagination.dto';
 import { NotFoundException } from '@nestjs/common';
-import { ApiResponse } from '../common/response/api-response';
+import { ApiResponse } from '../../src/common/response/api-response';
 
 describe('ProductsController', () => {
   let controller: ProductsController;

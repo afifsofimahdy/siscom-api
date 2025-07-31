@@ -1,6 +1,6 @@
 import { Test } from '@nestjs/testing';
-import { LoggerModule } from './logger.module';
-import { AppLoggerService } from './logger.service';
+import { LoggerModule } from '../../src/common/logger/logger.module';
+import { AppLoggerService } from '../../src/common/logger/logger.service';
 
 describe('LoggerModule', () => {
   it('should compile the module', async () => {

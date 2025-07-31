@@ -1,4 +1,4 @@
-import { ApiResponse } from './api-response';
+import { ApiResponse } from '../../src/common/response/api-response';
 
 describe('ApiResponse', () => {
   describe('success', () => {

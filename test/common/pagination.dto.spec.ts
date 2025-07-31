@@ -1,4 +1,4 @@
-import { PaginationDto } from './pagination.dto';
+import { PaginationDto } from '../../src/common/dto/pagination.dto';
 
 describe('PaginationDto', () => {
   describe('default values', () => {
