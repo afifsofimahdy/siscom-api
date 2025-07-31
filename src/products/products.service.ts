@@ -70,4 +70,14 @@ export class ProductsService {
       where: { id },
     });
   }
+
+  async removeMany(ids: number[]) {
+    return this.prisma.product.deleteMany({
+      where: {
+        id: {
+          in: ids,
+        },
+      },
+    });
+  }
 }

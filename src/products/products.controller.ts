@@ -1,10 +1,11 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, ParseIntPipe, NotFoundException, Query } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, ParseIntPipe, NotFoundException, Query, UsePipes, ValidationPipe } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse as SwaggerResponse, ApiParam, ApiBody, ApiQuery } from '@nestjs/swagger';
 import { ProductsService } from './products.service';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { ApiResponse } from '../common/response/api-response';
 import { PaginationDto } from '../common/dto/pagination.dto';
+import { DeleteManyDto } from './dto/delete-product.dto';
 
 @ApiTags('products')
 @Controller('products')
@@ -61,6 +62,25 @@ export class ProductsController {
     } catch (error) {
       if (error.code === 'P2025') {
         throw new NotFoundException('Product not found');
+      }
+      throw error;
+    }
+  }
+
+  @Delete('batch')
+  @ApiOperation({ summary: 'Delete multiple products by IDs' })
+  @SwaggerResponse({ status: 200, description: 'Products successfully deleted' })
+  @SwaggerResponse({ status: 400, description: 'Invalid input data' })
+  @SwaggerResponse({ status: 404, description: 'One or more products not found' })
+  @ApiBody({ type: DeleteManyDto })
+  @UsePipes(new ValidationPipe({ transform: true }))
+  async removeMany(@Body() dto: DeleteManyDto) {
+    try {
+      await this.productsService.removeMany(dto.ids);
+      return ApiResponse.success(null, 'Products deleted successfully');
+    } catch (error) {
+      if (error.code === 'P2025') {
+        throw new NotFoundException('One or more products not found');
       }
       throw error;
     }

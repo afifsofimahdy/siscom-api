@@ -21,7 +21,7 @@ async function main() {
   });
   const categoryId = createdCategory.id;
   
-  // Buat array data product
+  // Buat array data product (15 data)
   const productData = [
     {
       name: 'Laptop Asus ROG',
@@ -111,6 +111,51 @@ async function main() {
       stock: 5,
       image_url: 'https://example.com/images/corsair-psu.jpg',
       group_item: 'Komponen',
+      categoryId: categoryId
+    },
+    {
+      name: 'Tablet Apple iPad Air',
+      description: 'Tablet ringan dengan performa tinggi',
+      price: 9000000,
+      stock: 9,
+      image_url: 'https://example.com/images/ipad-air.jpg',
+      group_item: 'Tablet',
+      categoryId: categoryId
+    },
+    {
+      name: 'Printer Canon Pixma',
+      description: 'Printer warna multifungsi',
+      price: 2000000,
+      stock: 6,
+      image_url: 'https://example.com/images/canon-printer.jpg',
+      group_item: 'Aksesoris',
+      categoryId: categoryId
+    },
+    {
+      name: 'Speaker Bluetooth JBL',
+      description: 'Speaker portable dengan suara jernih',
+      price: 750000,
+      stock: 14,
+      image_url: 'https://example.com/images/jbl-speaker.jpg',
+      group_item: 'Aksesoris',
+      categoryId: categoryId
+    },
+    {
+      name: 'Smartwatch Xiaomi Mi Band 6',
+      description: 'Smartwatch dengan fitur kesehatan lengkap',
+      price: 500000,
+      stock: 22,
+      image_url: 'https://example.com/images/mi-band6.jpg',
+      group_item: 'Aksesoris',
+      categoryId: categoryId
+    },
+    {
+      name: 'Router TP-Link Archer',
+      description: 'Router WiFi dual band dengan kecepatan tinggi',
+      price: 600000,
+      stock: 11,
+      image_url: 'https://example.com/images/tplink-router.jpg',
+      group_item: 'Aksesoris',
       categoryId: categoryId
     }
   ];
