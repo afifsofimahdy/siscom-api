@@ -1,6 +1,6 @@
 # SISCOM API
 
-API untuk Sistem Informasi Penjualan Komputer (SISCOM) menggunakan NestJS, Prisma, dan MySQL.
+API menggunakan NestJS, Prisma, dan MySQL.
 
 ## Prasyarat
 
@@ -107,7 +107,7 @@ src/
 - Swagger UI untuk dokumentasi API
 - Validasi data menggunakan class-validator
 - Logging menggunakan Winston
-- Database PostgreSQL dengan Prisma ORM
+- Database MySQL dengan Prisma ORM
 
 ## Struktur API
 
